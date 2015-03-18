@@ -7,3 +7,4 @@ def calc_distance(data_arr, user_arr):
 
     # print(trainingDataArr[:, :4])  # get all beside last
     # print(trainingDataArr[:, -1])  # get last column
+    # x = numpy.delete(x,(2), axis=1) #To delete the third column, do this: x - array
