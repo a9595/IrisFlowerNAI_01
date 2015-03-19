@@ -1,6 +1,11 @@
 import numpy as np
 
 
+a = np.array([1, 2, 3, 1, 2, 1, 1, 1, 3, 2, 2, 1])
+counts = np.bincount(a)
+print(np.argmax(counts))
+
+
 def calc_distance(data_arr, user_arr):
     sum_of_arrays = 0
     for (data, user) in zip(data_arr, user_arr):
