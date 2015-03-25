@@ -1,9 +1,19 @@
 import numpy as np
 
+# import matplotlib.pyplot as plt
+# plt.plot([1,2,3,4])
+# plt.ylabel('some numbers')
+# plt.show()
 
-a = np.array([1, 2, 3, 1, 2, 1, 1, 1, 3, 2, 2, 1])
-counts = np.bincount(a)
-print(np.argmax(counts))
+
+# a = np.array([1, 2, 3, 1, 2, 1, 1, 1, 3, 2, 2, 1])
+# counts = np.bincount(a)
+# print(np.argmax(counts))
+#
+
+a = 3
+b = 6
+print(a + b)
 
 
 def calc_distance(data_arr, user_arr):

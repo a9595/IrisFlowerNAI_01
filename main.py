@@ -1,7 +1,9 @@
 import operator
 import numpy as np
+
 from funcs import calc_distance
 from funcs import get_training_data
+
 # init vars
 trainingDataArr = get_training_data()
 trainingDataArrGood = trainingDataArr[:, :4]
@@ -29,8 +31,24 @@ for idx, val in enumerate(trainingDataArrGood):
 
 sorted_dict = sorted(dictionaryData.items(), key=operator.itemgetter(0))  # sort dict
 
+# print first K elements
 for idx, val in enumerate(sorted_dict[:k_variable]):
     print("# ", idx, " = ", val)
+
+
+# _--------------
+
+first_K_elements = sorted_dict[:k_variable]
+k_most_freq_labels = list()
+for element in first_K_elements:
+    print("Element - ", element[1])
+    k_most_freq_labels.append(element[1])  # add labels to list
+
+print(k_most_freq_labels)
+
+counts = np.bincount(k_most_freq_labels)
+print("Most frequent label= ", np.argmax(counts))
+
 
 
 # find most frequent flower
