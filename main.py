@@ -1,10 +1,12 @@
 import operator
 import numpy as np
 
-from funcs import calc_distance
+from funcs import calc_distance, get_test_data
 from funcs import get_training_data
 
 # init vars
+#print("test data = ", get_test_data())
+
 trainingDataArr = get_training_data()
 trainingDataArrGood = trainingDataArr[:, :4]
 trainingDataLastColumnArr = trainingDataArr[:, -1]
@@ -48,17 +50,3 @@ print(k_most_freq_labels)
 
 counts = np.bincount(k_most_freq_labels)
 print("Most frequent label= ", np.argmax(counts))
-
-
-
-# find most frequent flower
-# list_of_types = dict(sorted_dict.values())
-#
-# counts = np.bincount(list_of_types)
-# print(np.argmax(counts))
-
-
-# distances_arr.sort()
-# print("SORTED arr  ", distances_arr)
-
-
