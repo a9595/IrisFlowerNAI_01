@@ -12,7 +12,6 @@ def classify(user_input_arr, k_variable):
     distances_arr = []
     dictionary_data = {}
 
-
     # let's play bro
     for idx, val in enumerate(training_data_arr_good):
         distance_rez = calc_distance(val, user_input_arr)  # calc distance
@@ -22,15 +21,15 @@ def classify(user_input_arr, k_variable):
         dictionary_data[distance_rez] = flower_type  # Key - flower type; Value = distance
     sorted_dict = sorted(dictionary_data.items(), key=operator.itemgetter(0))  # sort dict
     # print first K elements
-    for idx, val in enumerate(sorted_dict[:k_variable]):
-        print("# ", idx, " = ", val)
+    # for idx, val in enumerate(sorted_dict[:k_variable]):
+    # print("# ", idx, " = ", val)
 
     first_k_elements = sorted_dict[:k_variable]
     k_most_freq_labels = list()
     for element in first_k_elements:
-        print("Element - ", element[1])
+        # print("Element - ", element[1])
         k_most_freq_labels.append(element[1])  # add labels to list
-    print(k_most_freq_labels)
+    # print(k_most_freq_labels)
     counts = np.bincount(k_most_freq_labels)
     final_result = np.argmax(counts)
     # print("Most frequent label= ", final_result)
