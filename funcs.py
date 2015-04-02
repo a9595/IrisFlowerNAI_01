@@ -160,3 +160,9 @@ def get_user_input():
     for i in range(0, 4):
         input_arr.append(int(input("Enter arg:"), 10))
     return input_arr
+
+
+def get_flower_name(flower_id):
+    arr_names = ["Iris-setosa", "Iris-versicolor", "Iris-virginica"]
+    result = (arr_names[flower_id])
+    return result
