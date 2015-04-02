@@ -1,6 +1,10 @@
+from array import array
 import difflib
+import matplotlib.pyplot as plt
+import numpy as np
 from classifier import classify
 from funcs import get_user_input, get_test_data_inputs, get_test_data_outputs
+from scipy.interpolate import interp1d
 
 
 def calc_similarity(k_variable=5):
@@ -27,7 +31,33 @@ def calc_similarity(k_variable=5):
     return similarity
 
 
-result = calc_similarity(15)
-# good_results * 100 / size
+def show_graph(x_arr, y_arr, x_label, y_label):
+    plt.plot(x_arr, y_arr)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
 
+    # make it smoother
+    f2 = interp1d(x_arr, y_arr, kind='cubic')
+    xnew = np.linspace(min(x_arr), max(y_arr),
+                       100)  # change last param for   'smoothness' strength
+    plt.plot(x_arr, y_arr, 'o', xnew, f2(xnew), '--')
+
+    plt.show()
+
+# init
+k_values_arr = []
+similarity_values_arr = []
+
+r = list(range(1, 200, 8))
+for k in r:
+    similarity_values_arr.append(calc_similarity(k))  # a add similarity results
+
+k_values_arr = r
+
+print("SIMILAR % arr = ", similarity_values_arr)
+print("SIMILAR size = ", len(similarity_values_arr))
+print("k arr = ", k_values_arr)
+print("k arr size = ", len(k_values_arr))
+
+show_graph(k_values_arr, similarity_values_arr, "K values", "accuracy of result(%)")
 # TODO: graf  = x(K) y(Similarity)

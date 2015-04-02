@@ -1,7 +1,11 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
-plt.plot([1, 2, 3, 4, 1, 10, 5])
-plt.ylabel('some numbers')
+k = [1, 5, 10, 20, 50]
+s = [100, 100, 90, 80, 40]
+plt.plot(k, s)
+plt.xlabel("K value")
+plt.ylabel("similarity%")
 plt.show()
 
 
