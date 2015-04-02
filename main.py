@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.interpolate import interp1d
 from classifier import classify
+from foo.upload_to_ploty_server import upload_to_internet
 
 from funcs import get_user_input, get_test_data_inputs, get_test_data_outputs, get_flower_name
 
@@ -65,6 +66,7 @@ print("k arr size = ", len(k_values_arr))
 
 show_graph(k_values_arr, similarity_values_arr, "K values", "accuracy of result(%)")
 
+upload_to_internet()
 
 # user input
 print("\n\n\n\n User input:")

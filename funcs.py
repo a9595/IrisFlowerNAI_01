@@ -158,7 +158,7 @@ def get_training_data():
 def get_user_input():
     input_arr = []
     for i in range(0, 4):
-        input_arr.append(int(input("Enter arg:"), 10))
+        input_arr.append(float(input("Enter arg:")))
     return input_arr
 
 
