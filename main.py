@@ -3,8 +3,11 @@ import difflib
 import matplotlib.pyplot as plt
 import numpy as np
 from classifier import classify
+from foo.foooooooo import to_ploty
 from funcs import get_user_input, get_test_data_inputs, get_test_data_outputs, get_flower_name
 from scipy.interpolate import interp1d
+import plotly.tools as tls
+from ploty import upload_graph
 
 
 def calc_similarity(k_var=5, ):
@@ -60,6 +63,9 @@ print("SIMILAR % arr = ", similarity_values_arr)
 print("SIMILAR size = ", len(similarity_values_arr))
 print("k arr = ", k_values_arr)
 print("k arr size = ", len(k_values_arr))
+
+upload_graph(k_values_arr, similarity_values_arr)
+
 
 show_graph(k_values_arr, similarity_values_arr, "K values", "accuracy of result(%)")
 
