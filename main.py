@@ -3,7 +3,8 @@ import difflib
 import matplotlib.pyplot as plt
 import numpy as np
 from classifier import classify
-from foo.foooooooo import to_ploty
+import plotly.plotly as py
+from foo.upload_to_ploty_server import to_ploty
 from funcs import get_user_input, get_test_data_inputs, get_test_data_outputs, get_flower_name
 from scipy.interpolate import interp1d
 import plotly.tools as tls
@@ -45,6 +46,7 @@ def show_graph(x_arr, y_arr, x_label, y_label):
     plt.savefig('files/graph_result.pdf', bbox_inches='tight')  # save to PDF
     plt.savefig('files/graph_result.png', bbox_inches='tight')  # save to PNG
     plt.show()
+    return plt
 
 # init
 k_values_arr = []
@@ -64,10 +66,8 @@ print("SIMILAR size = ", len(similarity_values_arr))
 print("k arr = ", k_values_arr)
 print("k arr size = ", len(k_values_arr))
 
-upload_graph(k_values_arr, similarity_values_arr)
-
-
-show_graph(k_values_arr, similarity_values_arr, "K values", "accuracy of result(%)")
+plot = show_graph(k_values_arr, similarity_values_arr, "K values", "accuracy of result(%)")
+to_ploty(plot)
 
 # user input
 print("\n\n\n\n User input:")
