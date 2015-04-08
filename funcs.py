@@ -1,4 +1,6 @@
+from matplotlib import pyplot as plt
 import numpy as np
+from scipy.interpolate import interp1d
 
 
 def calc_distance(data_arr, user_arr):
@@ -8,8 +10,6 @@ def calc_distance(data_arr, user_arr):
         # print("a: ", data, "; b: ", user)
     return sum_of_arrays ** (1 / 2)
 
-    # print(trainingDataArr[:, :4])  # get all beside last
-    # print(trainingDataArr[:, -1])  # get last column
     # x = numpy.delete(x,(2), axis=1) #To delete the third column, do this: x - array
 
 
@@ -166,3 +166,17 @@ def get_flower_name(flower_id):
     arr_names = ["Iris-setosa", "Iris-versicolor", "Iris-virginica"]
     result = (arr_names[flower_id])
     return result
+
+
+def show_graph(x_arr, y_arr, x_label, y_label):
+    plt.plot(x_arr, y_arr)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    # make it smoother
+    f2 = interp1d(x_arr, y_arr, kind='cubic')
+    x_new = np.linspace(min(x_arr), max(y_arr),
+                        100)  # change last param for   'smoothness' strength
+    plt.plot(x_arr, y_arr, 'o', x_new, f2(x_new), '--')
+    plt.savefig('files/graph_result.pdf', bbox_inches='tight')  # save to PDF
+    plt.savefig('files/graph_result.png', bbox_inches='tight')  # save to PNG
+    plt.show()

@@ -1,28 +1,16 @@
 import difflib
 
-import matplotlib.pyplot as plt
-
-import numpy as np
-from scipy.interpolate import interp1d
 from classifier import classify
 from foo.upload_to_ploty_server import upload_to_internet
+from funcs import get_user_input, get_test_data_inputs, get_test_data_outputs, get_flower_name, show_graph
 
-from funcs import get_user_input, get_test_data_inputs, get_test_data_outputs, get_flower_name
 
-
-def calc_similarity(k_var=5, ):
-    # global user_input, k_variable, most_popular_arr, test_data_inputs_arr, test_data_outputs_arr, data, sm, similarity
-    # input
-    # k_variable = int(input("Enter K: ")) #TODO: user input
-    # user_input = get_user_input() #TODO: user input
-
-    # k_variable = 150
-
+def calc_similarity(k_var=5):
     most_popular_arr = []
     test_data_inputs_arr = get_test_data_inputs().tolist()  # import test data inputs
     test_data_outputs_arr = get_test_data_outputs().tolist()  # import test data results
     for data in test_data_inputs_arr:
-        most_popular_arr.append(classify(data, k_var))
+        most_popular_arr.append(classify(data, k_var))  #
     print("result most popular are: ", most_popular_arr)
     print("size = ", len(most_popular_arr))
     print("training data output:    ", test_data_outputs_arr)
@@ -33,18 +21,7 @@ def calc_similarity(k_var=5, ):
     return similarity
 
 
-def show_graph(x_arr, y_arr, x_label, y_label):
-    plt.plot(x_arr, y_arr)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-    # make it smoother
-    f2 = interp1d(x_arr, y_arr, kind='cubic')
-    x_new = np.linspace(min(x_arr), max(y_arr),
-                        100)  # change last param for   'smoothness' strength
-    plt.plot(x_arr, y_arr, 'o', x_new, f2(x_new), '--')
-    plt.savefig('files/graph_result.pdf', bbox_inches='tight')  # save to PDF
-    plt.savefig('files/graph_result.png', bbox_inches='tight')  # save to PNG
-    plt.show()
+
 
 # init
 k_values_arr = []
