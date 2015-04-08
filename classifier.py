@@ -6,7 +6,7 @@ from funcs import get_training_data, calc_distance
 def classify(user_input_arr, k_variable):
     # global trainingDataArr, trainingDataArrGood, trainingDataLastColumnArr, userInputArr, distances_arr, dictionaryData, k_variable, distance_rez, idx, val, flower_type, sorted_dict, first_K_elements, k_most_freq_labels, element, counts
     training_data_arr = get_training_data()
-    training_data_arr_good = training_data_arr[:, :4]
+    training_data_arr_good = training_data_arr[:, :4]  # get fist 4 columns - only user input
     training_data_last_column_arr = training_data_arr[:, -1]
 
     distances_arr = []
